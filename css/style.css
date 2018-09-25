@@ -1,0 +1,60 @@
+body {
+  background-image: url("../images/tictactoe.png");
+  background-repeat: repeat;
+}
+
+hr {
+  margin-top: 25px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px dashed lightgrey;
+  width: 28vw;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 32vw;
+  margin-top: 2vw;
+  margin-bottom: 20px
+}
+
+td {
+  width: 8vw;
+  height: 8vw;
+  background-color: white;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 25px;
+  box-shadow: 3px 3px 20px #828282;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  border-collapse: separate;
+  border-spacing: 8px;
+}
+
+#btn {
+  margin: 0 40vw;
+
+}
+
+.button {
+  background-color: #45cb25;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 10px;
+  border-radius: 10px;
+
+}
