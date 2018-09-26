@@ -14,34 +14,41 @@
     <div id="logo">
       <img src="images/Logo.png">
       <hr>
+      <!-- <div id="congra"></div> -->
     </div>
 
-    <div>
-      <table>
-        <tr>
-          <td class="leftColumn" id="0"></td>
-          <td class="centerColumn" id="1"></td>
-          <td class="rightColumn" id="2"></td>
-        </tr>
-        <tr>
-          <td class="leftColumn" id="3"></td>
-          <td class="centerColumn" id="4"></td>
-          <td class="rightColumn" id="5"></td>
-        </tr>
-        <tr>
-          <td class="leftColumn" id="6"></td>
-          <td class="centerColumn" id="7"></td>
-          <td class="rightColumn" id="8"></td>
-        </tr>
-      </table>
-      <hr>
-      <div id="btn">
-        <button class="button"id="start">START</button>
-        <button class="button" id="reset">RESET</button>
-      </div>
+    <div id="btn">
+      <span class="button" id="playerX">PlayerX</span>
+      <button class="button"id="reset">reset</button>
+      <span class="button"id="playerO">Player O</span>
+    </div>
 
-      <script src="js/jquery.js"></script>
-      <script src="js/main.js"></script>
+
+    <div class="popup-overlay">
+        <h3 class="popup-content"></h3>
+    </div>
+
+    <table id="panel">
+      <tr>
+        <td class="leftColumn" id="0"></td>
+        <td class="centerColumn" id="1"></td>
+        <td class="rightColumn" id="2"></td>
+      </tr>
+      <tr>
+        <td class="leftColumn" id="3"></td>
+        <td class="centerColumn" id="4"></td>
+        <td class="rightColumn" id="5"></td>
+      </tr>
+      <tr>
+        <td class="leftColumn" id="6"></td>
+        <td class="centerColumn" id="7"></td>
+        <td class="rightColumn" id="8"></td>
+      </tr>
+    </table>
+    <hr id="horizantalLine">
+  </div>
+  <script src="js/jquery.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
