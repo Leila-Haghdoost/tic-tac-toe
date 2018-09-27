@@ -7,6 +7,9 @@ This is a Tic-tac-toe game for two players, X and O, who take turns marking the 
 
 <img src="https://raw.githubusercontent.com/Leila-Haghdoost/tic-tac-toe/master/images/img1.png" width="300"/>
 
+### Live Demo 
+You can play my tic-tac-toe game here:
+https://leila-haghdoost.github.io/tic-tac-toe/
 
 ### Smaller Heading 
 * Item 1
