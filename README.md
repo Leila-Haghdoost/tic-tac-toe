@@ -11,7 +11,12 @@ This is a Tic-tac-toe game for two players, X and O, who take turns marking the 
 You can play my tic-tac-toe game here:
 https://leila-haghdoost.github.io/tic-tac-toe/
 
-### Smaller Heading 
-* Item 1
-* Item 2
+### Built With 
+* JavaScript
+* jQery
+* HTML
+* CSS
 
+### Known Bugs
+* It does not show draw alert.
+* when the game is draw it doesn't reset the game.
