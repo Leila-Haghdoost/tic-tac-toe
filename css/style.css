@@ -42,8 +42,11 @@ img {
 }
 
 #playerX {
+  font-family: helvetica;
+  font-size: 15px;
+  /* padding-left: 10px; */
   background-color: white;
-  color: black;
+  color: #375bcf;
   border: 2px solid #375bcf;
 }
 
@@ -65,8 +68,12 @@ img {
 }
 
 #playerO {
+  font-family: helvetica;
+  /* padding-left: 10px; */
+  font-size: 15px;
+
   background-color: white;
-  color: black;
+  color: #21B314;
   border: 2px solid #45cb25;
 }
 
@@ -85,6 +92,10 @@ td {
   border-radius: 25px;
   box-shadow: 3px 3px 20px #828282;
   position: relative;
+}
+td:hover{
+  background-color: #F0F2F2;
+  color: white;
 }
 
 table {
@@ -120,7 +131,7 @@ table {
   line-height: 10vw;
   width: 30vw;
   cursor: pointer;
-  background-color: #FFAE00;
+  background-color: #b21add;
 }
 
 h3 {

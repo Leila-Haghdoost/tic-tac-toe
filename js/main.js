@@ -1,6 +1,8 @@
+
 let player = "X";
 let move = 1; // counter of clicks
 let gameOver = false;
+
 
 let board = [
   null, null, null,
@@ -8,7 +10,57 @@ let board = [
   null, null, null
 ]; /// It takes the value of each cell to use in if statement
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+const nullCells = function() {
+  let newBoardArray = [];
+  for (var i = 0; i < 9; i++) {
+    if (board[i] === null) {
+      newBoardArray.push(i);
+      // console.log(`${nullCells}`);
+    }
+  }
+  return newBoardArray; ////provide an array of empty nullCells.
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const playComputerMove = function(currentPlayer) {
+  let availableCells = nullCells();
+  let randomCell = availableCells[Math.floor(Math.random() * availableCells.length)];
+  console.log(`Available cells are: `, availableCells);
+  console.log(`Random cell: `, randomCell, currentPlayer);
+
+  board[randomCell] = currentPlayer; // save the AI move into our game board array
+  console.log(board);
+
+  const cell = $(`#${randomCell}`); // use the randomCell number to make an ID selector for jQuery to get the DOM node for us
+  // console.log(cell);
+  playMove(cell); // pass the DOM node of the randomly chosen cell into playMove to place the move on the screen
+  // console.log(typeof currentPlayer);
+
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const checkForWinner = function ( currentPlayer  ){
+
+  const winner = winPatterns(currentPlayer);
+
+  if (winner !== '') { // it checkes the cell not to be empty.
+    if (winner === 'X') { //it compares the char and choose the winner.
+
+      // console.log(`currentPlayer X is the winner.`);
+      // console.log(currentPlayer);
+      trigger(currentPlayer);
+    } else if ((winner === 'O')) {
+      // console.log(`* currentPlayer O is the winner *`);
+      // console.log(currentPlayer);
+      trigger(currentPlayer);
+    }
+  }
+
+};
 const winPatterns = function(player) {
 
   //if statement cheke different winning patterns.
@@ -22,21 +74,23 @@ const winPatterns = function(player) {
     board[0] === player && board[4] === player && board[8] === player
   ) {
     gameOver = true;
-    // console.log(gameOver);
+    console.log("Win!", player);
     return player;
   } else {
     return `Game Over!`;
   }
 };
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const trigger = function(player) {
   console.log('trigger()');
   $(".popup-content").text(`Player ${player} won the game.`)
+  // $(".popup-content").text(`Player ${currentPlayer} won the game.`)
   // $(".popup-overlay").hide();
   $(".popup-overlay").show();
 };
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const resetGame = function() {
   // console.log('reset!');
@@ -54,24 +108,22 @@ const resetGame = function() {
     // return gameOver = false;
   }
   // reset
-
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 const playMove = function(clickedSquare) {
-  // let id = $("table tr td").attr("id");
-  if ((move % 2) == 1) {
-    // player1 moves are odd which is "X"
-    player = "X";
+  console.log("currentPlayer:", player);
+  if (player === 'X') {
     // $(clickedSquare).text("X");
     $(clickedSquare).css({
       backgroundImage: "url(images/x.png)",
       backgroundSize: "100px",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center"
-    })
+    });
   } else {
     //otherwise is "O".
-    player = "O";
     // $(clickedSquare).text("O");
     $(clickedSquare).css({
       backgroundImage: "url(images/o.png)",
@@ -83,39 +135,35 @@ const playMove = function(clickedSquare) {
   move++; //it counts next moves.
 };
 
-//JQUERY/////////////////////////////
+const switchPlayer = function(){
+  if (player === 'X') {
+    player = "O";
+  } else {
+    player = "X";
+  }
+};
+
+//JQUERY//////////////////////////////////////////////////////////////////////////////////////////////////
 
 $("table tr td").on("click", function() {
   // console.log($(this).attr("id"));
   let id = $(this).attr("id"); //it takes the id of each cell.
-  let $text = $(this).html();
   if (move <= 9) { //max of moves
 
     // check that the square is empty and check game still continues.
-    console.log('$text', `(${$text})`);
-    if ($text === "" && gameOver === false) {
+    if (board[id] === null && gameOver === false) {
 
-      playMove(this); //it refferes to the function which set the "x" and "o" images and css.
       board[id] = player;
-      console.log(board);
 
-      const winner = winPatterns(player);
-      if (winner !== '') { // it checkes the cell not to be empty.
-        if (winner === 'X') { //it compares the char and choose the winner.
+      // play the human player's move, and see if they won
+      playMove(this); //it refers to the function which set the "x" and "o" images and css.
+      checkForWinner( player );
+      switchPlayer(); // will switch from X to O
 
-          // console.log(`player X is the winner.`);
-          // console.log(player);
-          trigger(player);
-        } else if ((winner === 'O')) {
-          // console.log(`* player O is the winner *`);
-          // console.log(player);
-          trigger(player);
-        }
-      }
-
-      // playComputerMove();
-
-      // switch back to human player
+      // now play the AI player's move, and see if they won
+      playComputerMove( player );
+      checkForWinner( player );
+      switchPlayer();  // will switch from O back to X (the human player)
 
     } else {
       // the square is not empty - do not let the move happen
