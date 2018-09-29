@@ -3,6 +3,8 @@
 let player = "X";
 let move = 1; // counter of clicks
 let gameOver = false;
+let newBoardArray = [];
+
 
 
 let board = [
@@ -13,7 +15,7 @@ let board = [
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const nullCells = function() {
+const nullCells = function() { //It checkes for cells which is empty
   let newBoardArray = [];
   for (var i = 0; i < 9; i++) {
     if (board[i] === null) {
@@ -30,7 +32,6 @@ const playComputerMove = function(aiPlayer) {
   let availableCells = nullCells();
   let randomCell;
   let humanPlayer = "X"; //this is human humanPlayer, which is always "X"
-
 
 
 //////////////////////////////////////////////////////////////////////////////// up to down For "O"
@@ -296,7 +297,6 @@ const draw = function(player) {
 const resetGame = function() {
   // console.log('reset!');
   // console.log(gameOver);
-  if (gameOver) {
     board = [
       null, null, null,
       null, null, null,
@@ -308,7 +308,8 @@ const resetGame = function() {
     player = "X";
     gameOver = false;
     // return gameOver = false;
-  }
+    // newBoardArray = [];
+    // playComputerMove = false;
   // reset
 }
 
@@ -317,22 +318,10 @@ const resetGame = function() {
 const playMove = function(clickedSquare) {
   console.log("currentPlayer:", player);
   if (player === 'X') {
-    // $(clickedSquare).text("X");
-    $(clickedSquare).css({
-      backgroundImage: "url(images/x.png)",
-      backgroundSize: "100px",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center"
-    });
+    $(clickedSquare).css('background-image', "url(images/x.png)");
   } else {
     //otherwise is "O".
-    // $(clickedSquare).text("O");
-    $(clickedSquare).css({
-      backgroundImage: "url(images/o.png)",
-      backgroundSize: "100px",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center"
-    })
+    $(clickedSquare).css('background-image', "url(images/o.png)");
   }
   move++; //it counts next moves.
 };
@@ -394,14 +383,4 @@ $("#reset").on("click", function() {
 
 
 
-// checkFor2Of3(humanPlayer, 0, 3, 6);  // nice refactor idea
-
-    // const checkFor2Of3 = function (checkPlayer, firstOccupied, secondOccupied, freeCell) {
-    //   return board[firstOccupied] === checkPlayer && board[secondOccupied] === checkPlayer && board[freeCell] === null;
-    // };
-    //
-    // const combinationsToCheck = [
-    //   [humanPlayer, 0, 3, 6],
-    //   [humanPlayer, 2, 5, 8],
-    //   [...]
-    // ];
+//
