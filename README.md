@@ -9,7 +9,7 @@ This is a Tic-tac-toe game for two players, X and O, who take turns marking the 
 
 ### Live Demo
 You can play my tic-tac-toe game here:
-https://github.com/Leila-Haghdoost/tic-tac-toe
+https://leila-haghdoost.github.io/tic-tac-toe/
 
 ### Built With
 * JavaScript
